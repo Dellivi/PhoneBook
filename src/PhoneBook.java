@@ -27,7 +27,6 @@ public class PhoneBook {
                 for (int i = 0; i < pair.getValue().size(); i++) {
                     System.out.println((i + 1) + ". " + pair.getValue().get(i));
                 }
-
                 ok = true;
             }
         }
@@ -38,21 +37,21 @@ public class PhoneBook {
     }
 
     public static void main (String[]args) {
+        String name = "";
+
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            String name = "";
 
-            while (name.length() == 0){
+            while (name.length() == 0) {
                 name = br.readLine();
             }
 
             br.close();
             printPhone(name);
-        }
-        catch (ArrayIndexOutOfBoundsException e){
+
+        } catch (ArrayIndexOutOfBoundsException e){
             System.out.println(NAME_ERROR);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
