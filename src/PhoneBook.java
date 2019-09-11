@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Map;
+import java.util.List;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class PhoneBook {
     private final static String NAME_ERROR = "Вы ввели неправильно ФИО.";
@@ -16,24 +19,26 @@ public class PhoneBook {
 
     private static void printPhone (String name) {
         boolean ok = false;
+
+        // Создаю Entry в цикле.
         for (Map.Entry<String, List<String>> pair : PHONEBASE.entrySet()) {
             if (pair.getKey().equals(name)) {
                 for (int i = 0; i < pair.getValue().size(); i++) {
                     System.out.println((i + 1) + ". " + pair.getValue().get(i));
                 }
+
                 ok = true;
             }
         }
         if(!ok){
+            // Создаю новое исключение.
             throw new ArrayIndexOutOfBoundsException();
         }
     }
 
-
     public static void main (String[]args) throws Exception {
         try{
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
             String name = "";
 
             while (name.length() == 0){
@@ -41,7 +46,6 @@ public class PhoneBook {
             }
 
             br.close();
-
             printPhone(name);
         }
         catch (ArrayIndexOutOfBoundsException e){
